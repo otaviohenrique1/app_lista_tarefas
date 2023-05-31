@@ -1,7 +1,7 @@
 import 'package:app_lista_tarefas/data/database.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:app_lista_tarefas/data/base_dao.dart';
-import 'package:app_lista_tarefas/models/base_model.dart';
+import 'package:app_lista_tarefas/models/tarefa_model.dart';
 
 class TarefaDao implements BaseDao<TarefaModel> {
   static const String tabelaSql = "CREATE TABLE $_nomeTabela ("
