@@ -9,7 +9,7 @@ class TarefaModel {
 
   String id;
   String tarefa;
-  String concluido;
+  bool concluido;
   String autor;
   String dataCriacao;
 }
