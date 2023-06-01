@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:app_lista_tarefas/data/tarefa_inherited.dart';
 import 'package:flutter/material.dart';
 import 'package:app_lista_tarefas/components/appbar_header.dart';
 import 'package:app_lista_tarefas/components/titulo.dart';
@@ -34,8 +35,8 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
         child: StreamBuilder<List<TarefaModel>>(
-            stream: streamController.stream,
-            // stream: Stream.fromFuture(TarefaDao().findAll()),
+            // stream: streamController.stream,
+            stream: Stream.fromFuture(TarefaDao().findAll()),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 List<TarefaModel>? tarefas = snapshot.data;

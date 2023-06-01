@@ -1,40 +1,45 @@
-import 'package:app_lista_tarefas/models/tarefa_model.dart';
 import 'package:flutter/material.dart';
+import 'package:app_lista_tarefas/data/tarefa_dao.dart';
+import 'package:app_lista_tarefas/models/tarefa_model.dart';
 
 class TarefaInherited extends InheritedWidget {
-  const TarefaInherited(
-    this.listaTarefas, {
+  const TarefaInherited({
     Key? key,
     required Widget child,
+    required this.listaTarefas,
   }) : super(key: key, child: child);
 
   final List<TarefaModel> listaTarefas;
 
   void criarTarefa(TarefaModel tarefa) {
-    listaTarefas.add(tarefa);
+    // listaTarefas.add(tarefa);
+    TarefaDao().save(tarefa);
   }
 
   void removerTarefa(String idTarefa) {
-    listaTarefas.removeWhere((element) => element.id == idTarefa);
+    TarefaDao().delete(idTarefa);
+    // listaTarefas.removeWhere((element) => element.id == idTarefa);
   }
 
   List<TarefaModel> listarTodasTarefas() {
     return listaTarefas;
+    // return listaTarefas;
   }
 
-  TarefaModel? buscarTarefaPorId(String idTarefa) {
-    return listaTarefas.firstWhere((element) => element.id == idTarefa);
+  Future<List<TarefaModel>> buscarTarefaPorId(String idTarefa) async {
+    return await TarefaDao().find(idTarefa);
+    // return listaTarefas.firstWhere((element) => element.id == idTarefa);
   }
 
   void atualizarTarefa(String idTarefa, TarefaModel tarefa) {
-    TarefaModel tarefaBuscada =
-        listaTarefas.firstWhere((element) => element.id == idTarefa);
-
-    tarefaBuscada.id = tarefa.id;
-    tarefaBuscada.tarefa = tarefa.tarefa;
-    tarefaBuscada.concluido = tarefa.concluido;
-    tarefaBuscada.autor = tarefa.autor;
-    tarefaBuscada.dataCriacao = tarefa.dataCriacao;
+    TarefaDao().update(tarefa, idTarefa);
+    // TarefaModel tarefaBuscada =
+    //     listaTarefas.firstWhere((element) => element.id == idTarefa);
+    // tarefaBuscada.id = tarefa.id;
+    // tarefaBuscada.tarefa = tarefa.tarefa;
+    // tarefaBuscada.concluido = tarefa.concluido;
+    // tarefaBuscada.autor = tarefa.autor;
+    // tarefaBuscada.dataCriacao = tarefa.dataCriacao;
   }
 
   static TarefaInherited of(BuildContext context) {

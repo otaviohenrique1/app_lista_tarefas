@@ -1,9 +1,15 @@
+import 'package:app_lista_tarefas/data/tarefa_dao.dart';
+import 'package:app_lista_tarefas/models/tarefa_model.dart';
+import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 import 'package:flutter/material.dart';
-// import 'package:app_lista_tarefas/data/tarefa_inherited.dart';
 import 'package:app_lista_tarefas/pages/homepage.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const App());
+  runApp(ChangeNotifierProvider(
+    create: (context) => TarefaProvider(),
+    child: const App(),
+  ));
 }
 
 class App extends StatelessWidget {
@@ -18,7 +24,6 @@ class App extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const HomePage(),
-      // home: TarefaInherited(child: const HomePage()),
     );
   }
 }
