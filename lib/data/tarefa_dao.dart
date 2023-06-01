@@ -7,7 +7,7 @@ class TarefaDao implements BaseDao<TarefaModel> {
   static const String tabelaSql = "CREATE TABLE $_nomeTabela ("
       "$_id TEXT, "
       "$_tarefa TEXT, "
-      "$_concluido TEXT, "
+      "$_concluido BOOLEAN, "
       "$_autor TEXT, "
       "$_dataCriacao DATETIME"
       ")";

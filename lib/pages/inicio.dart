@@ -9,14 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:app_lista_tarefas/components/appbar_header.dart';
 import 'package:app_lista_tarefas/styles/cores.dart';
 
-class NovaTarefa extends StatefulWidget {
-  const NovaTarefa({super.key});
+class Inicio extends StatefulWidget {
+  const Inicio({super.key});
 
   @override
-  State<NovaTarefa> createState() => _NovaTarefaState();
+  State<Inicio> createState() => _InicioState();
 }
 
-class _NovaTarefaState extends State<NovaTarefa> {
+class _InicioState extends State<Inicio> {
   var formKey = GlobalKey<FormState>();
   final TextEditingController _tarefaController = TextEditingController();
   final TextEditingController _autorController = TextEditingController();
