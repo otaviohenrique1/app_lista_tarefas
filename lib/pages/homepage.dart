@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:app_lista_tarefas/components/appbar_header.dart';
 import 'package:app_lista_tarefas/components/lista_carregamento_mensagem.dart';
 import 'package:app_lista_tarefas/components/lista_vazia_mensagem.dart';
@@ -7,7 +9,6 @@ import 'package:app_lista_tarefas/models/tarefa_model.dart';
 import 'package:app_lista_tarefas/pages/nova_tarefa.dart';
 import 'package:app_lista_tarefas/styles/cores.dart';
 import 'package:app_lista_tarefas/styles/fonts.dart';
-import 'package:app_lista_tarefas/utils/listas.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,12 +21,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    StreamController<List<TarefaModel>> _streamController =
+        StreamController<List<TarefaModel>>();
+
+    var dados = Stream.fromFuture(TarefaDao().findAll());
+
     return Scaffold(
       appBar: const AppBarHeader(titulo: "Lista de tarefas"),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: StreamBuilder<List<TarefaModel>>(
-            stream: Stream.fromFuture(TarefaDao().findAll()),
+            stream: dados,
             builder: (context, snapshot) {
               List<TarefaModel>? tarefas = snapshot.data;
               switch (snapshot.connectionState) {
@@ -43,10 +49,9 @@ class _HomePageState extends State<HomePage> {
                     if (tarefas.isNotEmpty) {
                       return ListView.builder(
                         padding: const EdgeInsets.only(top: 24, bottom: 70),
-                        itemCount: listaTarefas.length,
+                        itemCount: tarefas.length,
                         itemBuilder: (context, index) {
-                          List<TarefaModel> lista = listaTarefas;
-                          TarefaModel item = lista[index];
+                          TarefaModel item = tarefas[index];
                           String tarefa = "${item.tarefa.substring(0, 40)}...";
                           String autor = item.autor;
                           String dataHora = item.dataCriacao;

@@ -6,7 +6,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit tempora facere odit nulla veritatis eum porro ex non esse magni laborum sed, temporibus eligendi accusantium ut adipisci, aliquid alias dignissimos.",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
   TarefaModel(
@@ -14,7 +14,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis maiores illo neque mollitia est ex voluptas quis, iusto pariatur fugit explicabo tempore necessitatibus nesciunt exercitationem deserunt quam. Labore, eligendi dolore?",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
   TarefaModel(
@@ -22,7 +22,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit eum hic esse quo ad explicabo beatae natus unde ex recusandae, voluptas quidem nihil, blanditiis nulla dolores ipsa odio aperiam ea.",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
   TarefaModel(
@@ -30,7 +30,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis necessitatibus, soluta commodi vero quasi magnam dolorem excepturi itaque libero ullam sed ipsum, iusto perspiciatis accusamus, odit veniam quas deserunt! Dicta.",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
   TarefaModel(
@@ -38,7 +38,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, deleniti? Dolorem repellendus eveniet quos amet, aliquid, reiciendis fugit ut a ratione culpa quas laudantium nesciunt quia itaque hic saepe. Ducimus!",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
   TarefaModel(
@@ -46,7 +46,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas voluptatibus eius esse, doloribus accusantium ea consectetur beatae sapiente quisquam nisi perferendis, asperiores maiores exercitationem nulla quos reiciendis eum minus?",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
   TarefaModel(
@@ -54,7 +54,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed error pariatur perspiciatis non adipisci dolor perferendis commodi, ratione nesciunt facere suscipit vitae et sit! Sequi aliquid iste quasi impedit possimus.",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
   TarefaModel(
@@ -62,7 +62,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quibusdam ut amet totam fugiat ipsum nulla cupiditate? Iste temporibus quas dolor fugit debitis fugiat exercitationem ipsa eum nesciunt, ea molestiae?",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
   TarefaModel(
@@ -70,7 +70,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat necessitatibus molestias expedita, tenetur repudiandae, praesentium corrupti consectetur corporis explicabo perferendis omnis alias beatae earum nobis doloribus, delectus debitis inventore nam.",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
   TarefaModel(
@@ -78,7 +78,7 @@ final List<TarefaModel> listaTarefas = [
     tarefa:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis amet tempora quaerat sapiente sit quis iusto saepe excepturi id, earum delectus? Harum tenetur velit nulla mollitia. Provident, dolor aut. Voluptates!",
     autor: "Jeca",
-    concluido: false,
+    concluido: "Não",
     dataCriacao: "31/05/2023 20:43:47",
   ),
 ];

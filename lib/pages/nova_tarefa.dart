@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:app_lista_tarefas/components/botao.dart';
 import 'package:app_lista_tarefas/components/campo_texto.dart';
 import 'package:app_lista_tarefas/components/snackbar_mensagem.dart';
 import 'package:app_lista_tarefas/data/tarefa_dao.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
 import 'package:app_lista_tarefas/utils/helpers.dart';
+import 'package:app_lista_tarefas/utils/listas.dart';
 import 'package:app_lista_tarefas/utils/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:app_lista_tarefas/components/appbar_header.dart';
@@ -68,7 +71,7 @@ class _NovaTarefaState extends State<NovaTarefa> {
                         String tarefa = _tarefaController.text;
                         String autor = _autorController.text;
                         String dataCriacao = geraDataHoraFormatada();
-                        bool concluido = false;
+                        String concluido = "Não";
                         TarefaModel novaTarefa = TarefaModel(
                           id: id,
                           tarefa: tarefa,
@@ -90,7 +93,21 @@ class _NovaTarefaState extends State<NovaTarefa> {
                   fontColor: branco,
                   label: "Salvar",
                   backgroundColor: azul1,
-                )
+                ),
+                const SizedBox(height: 8),
+                Botao(
+                  onPressed: () {
+                    setState(() {
+                      _tarefaController.text = listaTarefas[
+                              Random().nextInt(listaTarefas.length - 1)]
+                          .tarefa;
+                      _autorController.text = "Jeca";
+                    });
+                  },
+                  fontColor: branco,
+                  label: "Dados",
+                  backgroundColor: azul1,
+                ),
               ],
             ),
           ),
