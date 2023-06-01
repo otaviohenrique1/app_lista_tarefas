@@ -1,8 +1,7 @@
-import 'package:app_lista_tarefas/data/tarefa_dao.dart';
-import 'package:app_lista_tarefas/models/tarefa_model.dart';
-import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:app_lista_tarefas/models/tarefa_model.dart';
+import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 
 class ItemListaTarefas extends StatefulWidget {
   const ItemListaTarefas({
@@ -25,8 +24,8 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
 
     var item = widget.tarefa;
 
-    TarefaProvider listTypes =
-        Provider.of<TarefaProvider>(context, listen: false);
+    TarefaProvider2 listTypes =
+        Provider.of<TarefaProvider2>(context, listen: false);
 
     updateCheckbox(value) {
       setState(() {
@@ -65,7 +64,7 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
           value: _isChecked,
           onChanged: updateCheckbox,
         ),
-        trailing: Consumer<TarefaProvider>(
+        trailing: Consumer<TarefaProvider2>(
           builder: (context, providerTarefaModel, child) {
             return IconButton(
               onPressed: () {

@@ -13,17 +13,20 @@ class TarefaProvider extends ChangeNotifier {
 
   Future save(TarefaModel tarefa) async {
     await TarefaDao().save(tarefa);
-    notifyListeners();
+    findAll();
+    // notifyListeners();
   }
 
   Future delete(String idTarefa) async {
     await TarefaDao().delete(idTarefa);
-    notifyListeners();
+    findAll();
+    // notifyListeners();
   }
 
   Future update(TarefaModel tarefa, String idTarefa) async {
     await TarefaDao().update(tarefa, idTarefa);
-    notifyListeners();
+    findAll();
+    // notifyListeners();
   }
 
   Future<void> findById(String idTarefa) async {
@@ -34,6 +37,45 @@ class TarefaProvider extends ChangeNotifier {
 
   findAll() async {
     _listaTarefas = await TarefaDao().findAll();
+    notifyListeners();
+  }
+}
+
+class TarefaProvider2 extends ChangeNotifier {
+  late Future<List<TarefaModel>> _listaTarefas;
+  late TarefaModel _dadosTarefa;
+  late String _dadosIdTarefa;
+
+  Future<List<TarefaModel>> get listaTarefas => _listaTarefas;
+  TarefaModel get dadosTarefa => _dadosTarefa;
+  String get dadosIdTarefa => _dadosIdTarefa;
+
+  Future save(TarefaModel tarefa) async {
+    await TarefaDao().save(tarefa);
+    findAll();
+    // notifyListeners();
+  }
+
+  Future delete(String idTarefa) async {
+    await TarefaDao().delete(idTarefa);
+    findAll();
+    // notifyListeners();
+  }
+
+  Future update(TarefaModel tarefa, String idTarefa) async {
+    await TarefaDao().update(tarefa, idTarefa);
+    findAll();
+    // notifyListeners();
+  }
+
+  Future<void> findById(String idTarefa) async {
+    List<TarefaModel> data = await TarefaDao().find(idTarefa);
+    _dadosTarefa = data.first;
+    notifyListeners();
+  }
+
+  findAll() async {
+    _listaTarefas = TarefaDao().findAll();
     notifyListeners();
   }
 }
