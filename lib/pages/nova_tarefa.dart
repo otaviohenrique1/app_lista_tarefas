@@ -1,16 +1,16 @@
 import 'dart:math';
-
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:app_lista_tarefas/components/botao.dart';
 import 'package:app_lista_tarefas/components/campo_texto.dart';
 import 'package:app_lista_tarefas/components/snackbar_mensagem.dart';
-import 'package:app_lista_tarefas/data/tarefa_dao.dart';
+import 'package:app_lista_tarefas/components/appbar_header.dart';
+import 'package:app_lista_tarefas/styles/cores.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
+import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 import 'package:app_lista_tarefas/utils/helpers.dart';
 import 'package:app_lista_tarefas/utils/listas.dart';
 import 'package:app_lista_tarefas/utils/validator.dart';
-import 'package:flutter/material.dart';
-import 'package:app_lista_tarefas/components/appbar_header.dart';
-import 'package:app_lista_tarefas/styles/cores.dart';
 
 class NovaTarefa extends StatefulWidget {
   const NovaTarefa({super.key});
@@ -63,36 +63,40 @@ class _NovaTarefaState extends State<NovaTarefa> {
                   obscureText: false,
                 ),
                 const SizedBox(height: 32),
-                Botao(
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      setState(() {
-                        String id = geraUuid();
-                        String tarefa = _tarefaController.text;
-                        String autor = _autorController.text;
-                        String dataCriacao = geraDataHoraFormatada();
-                        String concluido = "Não";
-                        TarefaModel novaTarefa = TarefaModel(
-                          id: id,
-                          tarefa: tarefa,
-                          concluido: concluido,
-                          autor: autor,
-                          dataCriacao: dataCriacao,
-                        );
-                        TarefaDao().save(novaTarefa);
-                        _tarefaController.clear();
-                        _autorController.clear();
-                        mensagemSnackBar(
-                          context: context,
-                          mensagem: "Tarefa salva",
-                        );
-                        Navigator.pop(context);
-                      });
-                    }
+                Consumer<TarefaProvider>(
+                  builder: (context, providerTarefaModel, child) {
+                    return Botao(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          setState(() {
+                            String id = geraUuid();
+                            String tarefa = _tarefaController.text;
+                            String autor = _autorController.text;
+                            String dataCriacao = geraDataHoraFormatada();
+                            String concluido = "Não";
+                            TarefaModel novaTarefa = TarefaModel(
+                              id: id,
+                              tarefa: tarefa,
+                              concluido: concluido,
+                              autor: autor,
+                              dataCriacao: dataCriacao,
+                            );
+                            providerTarefaModel.save(novaTarefa);
+                            _tarefaController.clear();
+                            _autorController.clear();
+                            mensagemSnackBar(
+                              context: context,
+                              mensagem: "Tarefa salva",
+                            );
+                            Navigator.pop(context);
+                          });
+                        }
+                      },
+                      fontColor: branco,
+                      label: "Salvar",
+                      backgroundColor: azul1,
+                    );
                   },
-                  fontColor: branco,
-                  label: "Salvar",
-                  backgroundColor: azul1,
                 ),
                 const SizedBox(height: 8),
                 Botao(
@@ -113,15 +117,6 @@ class _NovaTarefaState extends State<NovaTarefa> {
           ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: azul1,
-      //   onPressed: () {
-      //     Navigator.pop(context);
-      //   },
-      //   tooltip: "Adicionar",
-      //   shape: const CircleBorder(),
-      //   child: const Icon(Icons.arrow_back, color: branco),
-      // ),
     );
   }
 }
