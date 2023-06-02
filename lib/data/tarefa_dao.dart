@@ -7,6 +7,7 @@ class TarefaDao implements BaseDao<TarefaModel> {
   static const String tabelaSql = "CREATE TABLE $_nomeTabela ("
       "$_id TEXT, "
       "$_tarefa TEXT, "
+      "$_titulo TEXT, "
       "$_concluido TEXT, "
       "$_autor TEXT, "
       "$_dataCriacao DATETIME"
@@ -15,6 +16,7 @@ class TarefaDao implements BaseDao<TarefaModel> {
   static const String _nomeTabela = "tarefaTabela";
 
   static const String _id = "id";
+  static const String _titulo = "titulo";
   static const String _tarefa = "tarefa";
   static const String _concluido = "concluido";
   static const String _autor = "autor";
@@ -65,6 +67,7 @@ class TarefaDao implements BaseDao<TarefaModel> {
   Map<String, dynamic> toMap(TarefaModel tarefa) {
     final Map<String, dynamic> mapaTarefa = {};
     mapaTarefa[_id] = tarefa.id;
+    mapaTarefa[_titulo] = tarefa.titulo;
     mapaTarefa[_tarefa] = tarefa.tarefa;
     mapaTarefa[_concluido] = tarefa.concluido;
     mapaTarefa[_autor] = tarefa.autor;
@@ -78,6 +81,7 @@ class TarefaDao implements BaseDao<TarefaModel> {
     for (Map<String, dynamic> linha in mapaTarefa) {
       final TarefaModel tarefa = TarefaModel(
         id: linha[_id],
+        titulo: linha[_titulo],
         tarefa: linha[_tarefa],
         concluido: linha[_concluido],
         autor: linha[_autor],

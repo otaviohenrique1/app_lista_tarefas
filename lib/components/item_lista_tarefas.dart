@@ -35,6 +35,7 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
         listTypes.update(
             TarefaModel(
               id: item.id,
+              titulo: item.titulo,
               tarefa: item.tarefa,
               autor: item.autor,
               concluido: (_isChecked) ? "Não" : "Sim",

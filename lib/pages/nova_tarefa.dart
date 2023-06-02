@@ -21,11 +21,13 @@ class NovaTarefa extends StatefulWidget {
 
 class _NovaTarefaState extends State<NovaTarefa> {
   var formKey = GlobalKey<FormState>();
+  final TextEditingController _tituloController = TextEditingController();
   final TextEditingController _tarefaController = TextEditingController();
   final TextEditingController _autorController = TextEditingController();
 
   @override
   void dispose() {
+    _tituloController.dispose();
     _tarefaController.dispose();
     _autorController.dispose();
     super.dispose();
@@ -70,12 +72,14 @@ class _NovaTarefaState extends State<NovaTarefa> {
                         if (formKey.currentState!.validate()) {
                           setState(() {
                             String id = geraUuid();
+                            String titulo = _tituloController.text;
                             String tarefa = _tarefaController.text;
                             String autor = _autorController.text;
                             String dataCriacao = geraDataHoraFormatada();
                             String concluido = "Não";
                             TarefaModel novaTarefa = TarefaModel(
                               id: id,
+                              titulo: titulo,
                               tarefa: tarefa,
                               concluido: concluido,
                               autor: autor,

@@ -1,6 +1,7 @@
 class TarefaModel {
   TarefaModel({
     required this.id,
+    required this.titulo,
     required this.tarefa,
     required this.concluido,
     required this.autor,
@@ -8,6 +9,7 @@ class TarefaModel {
   });
 
   String id;
+  String titulo;
   String tarefa;
   String concluido;
   String autor;

@@ -22,11 +22,13 @@ class EditarTarefa extends StatefulWidget {
 
 class _EditarTarefaState extends State<EditarTarefa> {
   var formKey = GlobalKey<FormState>();
+  final TextEditingController _tituloController = TextEditingController();
   final TextEditingController _tarefaController = TextEditingController();
   final TextEditingController _autorController = TextEditingController();
 
   @override
   void dispose() {
+    _tituloController.dispose();
     _tarefaController.dispose();
     _autorController.dispose();
     super.dispose();
@@ -40,6 +42,7 @@ class _EditarTarefaState extends State<EditarTarefa> {
     providerTarefa.findById(widget.idTarefa);
     TarefaModel tarefa = providerTarefa.dadosTarefa;
 
+    _tituloController.text = tarefa.titulo;
     _tarefaController.text = tarefa.tarefa;
     _autorController.text = tarefa.autor;
     String id = tarefa.id;
@@ -57,6 +60,15 @@ class _EditarTarefaState extends State<EditarTarefa> {
                 key: formKey,
                 child: Column(
                   children: [
+                    CampoTexto(
+                      exibeLabel: true,
+                      label: "Titulo",
+                      validator: validaCampoVazio,
+                      keyboardType: TextInputType.text,
+                      controller: _tituloController,
+                      hintText: "Digite o titulo da tarefa",
+                      obscureText: false,
+                    ),
                     CampoTexto(
                       exibeLabel: true,
                       label: "Tarefa",
@@ -82,10 +94,12 @@ class _EditarTarefaState extends State<EditarTarefa> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           setState(() {
+                            String titulo = _tituloController.text;
                             String tarefa = _tarefaController.text;
                             String autor = _autorController.text;
                             TarefaModel novaTarefa = TarefaModel(
                               id: id,
+                              titulo: titulo,
                               tarefa: tarefa,
                               concluido: concluido,
                               autor: autor,
