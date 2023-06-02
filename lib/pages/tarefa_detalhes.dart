@@ -75,6 +75,18 @@ class _TarefaDetalhesState extends State<TarefaDetalhes> {
                     label: "Editar",
                     backgroundColor: azul1,
                   ),
+                  Consumer<TarefaProvider>(
+                    builder: (context, providerTarefaModel, child) {
+                      return Botao(
+                        onPressed: () {
+                          providerTarefaModel.delete(widget.idTarefa);
+                        },
+                        fontColor: branco,
+                        label: "Remover",
+                        backgroundColor: azul1,
+                      );
+                    },
+                  )
                 ],
               );
             },

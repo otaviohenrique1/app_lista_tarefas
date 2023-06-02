@@ -53,28 +53,16 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
           ? TextDecoration.lineThrough
           : TextDecoration.none,
     );
+
+    String tarefa = "${item.tarefa.substring(0, 40)}...";
+    String dataCriacao = item.dataCriacao;
+
     return Container(
       // key: Key(uuid),
       margin: const EdgeInsets.only(bottom: 10),
       child: ListTile(
-        title: Text(
-          "${item.tarefa.substring(0, 40)}...",
-          style: textStyle,
-        ),
-        subtitle: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              item.autor,
-              style: textStyle,
-            ),
-            Text(
-              item.dataCriacao,
-              style: textStyle,
-            ),
-          ],
-        ),
+        title: Text(tarefa, style: textStyle),
+        subtitle: Text(dataCriacao, style: textStyle),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8)),
           side: BorderSide(color: Colors.black, width: 1),
