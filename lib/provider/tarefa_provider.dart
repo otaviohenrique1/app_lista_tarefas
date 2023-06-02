@@ -13,6 +13,8 @@ class TarefaProvider extends ChangeNotifier {
     dataCriacao: "",
   );
 
+  List<TarefaModel> dadosTarefa2 = [];
+
   List<TarefaModel> get listaTarefas => _listaTarefas;
   TarefaModel get dadosTarefa => _dadosTarefa;
 
@@ -24,6 +26,14 @@ class TarefaProvider extends ChangeNotifier {
 
   Future delete(String idTarefa) async {
     await TarefaDao().delete(idTarefa);
+    _dadosTarefa = TarefaModel(
+      id: "",
+      titulo: "",
+      tarefa: "",
+      concluido: "",
+      autor: "",
+      dataCriacao: "",
+    );
     findAll();
     // notifyListeners();
   }
@@ -36,8 +46,20 @@ class TarefaProvider extends ChangeNotifier {
 
   findById(String idTarefa) async {
     List<TarefaModel> data = await TarefaDao().find(idTarefa);
-    _dadosTarefa = data.first;
-    notifyListeners();
+    if (data.isNotEmpty) {
+      _dadosTarefa = data.first;
+      notifyListeners();
+    } else {
+      _dadosTarefa = TarefaModel(
+        id: "",
+        titulo: "",
+        tarefa: "",
+        concluido: "",
+        autor: "",
+        dataCriacao: "",
+      );
+      notifyListeners();
+    }
   }
 
   findAll() async {

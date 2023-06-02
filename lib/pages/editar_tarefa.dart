@@ -69,6 +69,7 @@ class _EditarTarefaState extends State<EditarTarefa> {
                       hintText: "Digite o titulo da tarefa",
                       obscureText: false,
                     ),
+                    const SizedBox(height: 20),
                     CampoTexto(
                       exibeLabel: true,
                       label: "Tarefa",

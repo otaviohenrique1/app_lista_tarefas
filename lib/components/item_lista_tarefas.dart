@@ -27,12 +27,12 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
 
     _isChecked = (item.concluido == "Sim") ? true : false;
 
-    TarefaProvider listTypes =
+    TarefaProvider tarefaModelProvider =
         Provider.of<TarefaProvider>(context, listen: false);
 
     updateCheckbox(value) {
       setState(() {
-        listTypes.update(
+        tarefaModelProvider.update(
             TarefaModel(
               id: item.id,
               titulo: item.titulo,
@@ -55,14 +55,15 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
           : TextDecoration.none,
     );
 
-    String tarefa = "${item.tarefa.substring(0, 40)}...";
+    // String tarefa = "${item.tarefa.substring(0, 40)}...";
+    String titulo = item.titulo;
     String dataCriacao = item.dataCriacao;
 
     return Container(
       // key: Key(uuid),
       margin: const EdgeInsets.only(bottom: 10),
       child: ListTile(
-        title: Text(tarefa, style: textStyle),
+        title: Text(titulo, style: textStyle),
         subtitle: Text(dataCriacao, style: textStyle),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8)),

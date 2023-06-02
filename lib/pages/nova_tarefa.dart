@@ -46,6 +46,16 @@ class _NovaTarefaState extends State<NovaTarefa> {
               children: [
                 CampoTexto(
                   exibeLabel: true,
+                  label: "Titulo",
+                  validator: validaCampoVazio,
+                  keyboardType: TextInputType.text,
+                  controller: _tituloController,
+                  hintText: "Digite o titulo da tarefa",
+                  obscureText: false,
+                ),
+                const SizedBox(height: 20),
+                CampoTexto(
+                  exibeLabel: true,
                   label: "Tarefa",
                   maxLines: 10,
                   keyboardType: TextInputType.text,
@@ -106,6 +116,9 @@ class _NovaTarefaState extends State<NovaTarefa> {
                 Botao(
                   onPressed: () {
                     setState(() {
+                      _tituloController.text = listaTarefas[
+                              Random().nextInt(listaTarefas.length - 1)]
+                          .titulo;
                       _tarefaController.text = listaTarefas[
                               Random().nextInt(listaTarefas.length - 1)]
                           .tarefa;

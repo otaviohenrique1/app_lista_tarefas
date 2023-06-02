@@ -42,6 +42,11 @@ class _TarefaDetalhesState extends State<TarefaDetalhes> {
                   ),
                   const SizedBox(height: 16),
                   ItemTarefaDetalhes(
+                    titulo: "Titulo:",
+                    descricao: dados.titulo,
+                  ),
+                  const SizedBox(height: 16),
+                  ItemTarefaDetalhes(
                     titulo: "Tarefa:",
                     descricao: dados.tarefa,
                   ),
@@ -75,18 +80,21 @@ class _TarefaDetalhesState extends State<TarefaDetalhes> {
                     label: "Editar",
                     backgroundColor: azul1,
                   ),
+                  const SizedBox(height: 8),
                   Consumer<TarefaProvider>(
                     builder: (context, providerTarefaModel, child) {
                       return Botao(
                         onPressed: () {
                           providerTarefaModel.delete(widget.idTarefa);
+                          Navigator.pop(context);
                         },
                         fontColor: branco,
                         label: "Remover",
                         backgroundColor: azul1,
                       );
                     },
-                  )
+                  ),
+                  const SizedBox(height: 32),
                 ],
               );
             },
@@ -129,7 +137,7 @@ class ItemTarefaDetalhes extends StatelessWidget {
               titulo: descricao,
               alignment: Alignment.centerRight,
               color: preto,
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: fontWeightRegular,
             ),
           ],
