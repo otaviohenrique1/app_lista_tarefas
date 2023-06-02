@@ -28,7 +28,7 @@ class TarefaProvider extends ChangeNotifier {
     // notifyListeners();
   }
 
-  Future<void> findById(String idTarefa) async {
+  findById(String idTarefa) async {
     List<TarefaModel> data = await TarefaDao().find(idTarefa);
     _dadosTarefa = data.first;
     notifyListeners();

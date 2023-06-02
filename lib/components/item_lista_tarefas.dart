@@ -1,11 +1,10 @@
-import 'package:app_lista_tarefas/data/tarefa_dao.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
 import 'package:app_lista_tarefas/pages/tarefa_detalhes.dart';
 import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 import 'package:app_lista_tarefas/styles/cores.dart';
 import 'package:app_lista_tarefas/styles/fonts.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ItemListaTarefas extends StatefulWidget {
   const ItemListaTarefas({

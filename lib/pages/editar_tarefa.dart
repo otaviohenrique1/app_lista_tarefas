@@ -42,6 +42,9 @@ class _EditarTarefaState extends State<EditarTarefa> {
 
     _tarefaController.text = tarefa.tarefa;
     _autorController.text = tarefa.autor;
+    String id = tarefa.id;
+    String dataCriacao = tarefa.dataCriacao;
+    String concluido = tarefa.concluido;
 
     return Scaffold(
       appBar: const AppBarHeader(titulo: "Nova tarefa"),
@@ -79,11 +82,8 @@ class _EditarTarefaState extends State<EditarTarefa> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           setState(() {
-                            String id = dados.id;
                             String tarefa = _tarefaController.text;
                             String autor = _autorController.text;
-                            String dataCriacao = dados.dataCriacao;
-                            String concluido = dados.concluido;
                             TarefaModel novaTarefa = TarefaModel(
                               id: id,
                               tarefa: tarefa,
