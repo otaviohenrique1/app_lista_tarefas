@@ -86,7 +86,7 @@ class _NovaTarefaState extends State<NovaTarefa> {
                             _autorController.clear();
                             mensagemSnackBar(
                               context: context,
-                              mensagem: "Tarefa salva",
+                              mensagem: "Tarefa salva com sucesso!",
                             );
                             Navigator.pop(context);
                           });

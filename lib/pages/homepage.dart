@@ -1,11 +1,11 @@
-import 'package:app_lista_tarefas/components/titulo.dart';
-import 'package:app_lista_tarefas/styles/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 import 'package:app_lista_tarefas/pages/nova_tarefa.dart';
+import 'package:app_lista_tarefas/components/titulo.dart';
 import 'package:app_lista_tarefas/components/item_lista_tarefas.dart';
 import 'package:app_lista_tarefas/components/appbar_header.dart';
+import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
+import 'package:app_lista_tarefas/styles/fonts.dart';
 import 'package:app_lista_tarefas/styles/cores.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
 

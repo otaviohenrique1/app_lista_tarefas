@@ -1,6 +1,9 @@
 import 'package:app_lista_tarefas/data/tarefa_dao.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
+import 'package:app_lista_tarefas/pages/tarefa_detalhes.dart';
 import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
+import 'package:app_lista_tarefas/styles/cores.dart';
+import 'package:app_lista_tarefas/styles/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,9 +24,9 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
 
   @override
   Widget build(BuildContext context) {
-    // _isChecked = (widget.tarefa.concluido == "Sim") ? true : false;
-
     var item = widget.tarefa;
+
+    _isChecked = (item.concluido == "Sim") ? true : false;
 
     TarefaProvider listTypes =
         Provider.of<TarefaProvider>(context, listen: false);
@@ -43,17 +46,34 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
       });
     }
 
+    TextStyle textStyle = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: fontWeightRegular,
+      color: preto,
+      decoration: (item.concluido == "Sim")
+          ? TextDecoration.lineThrough
+          : TextDecoration.none,
+    );
     return Container(
       // key: Key(uuid),
       margin: const EdgeInsets.only(bottom: 10),
       child: ListTile(
-        title: Text("${item.tarefa.substring(0, 40)}..."),
+        title: Text(
+          "${item.tarefa.substring(0, 40)}...",
+          style: textStyle,
+        ),
         subtitle: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(item.autor),
-            Text(item.dataCriacao),
-            Text(item.concluido),
+            Text(
+              item.autor,
+              style: textStyle,
+            ),
+            Text(
+              item.dataCriacao,
+              style: textStyle,
+            ),
           ],
         ),
         shape: const RoundedRectangleBorder(
@@ -61,6 +81,14 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
           side: BorderSide(color: Colors.black, width: 1),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TarefaDetalhes(idTarefa: widget.tarefa.id),
+            ),
+          );
+        },
         leading: Checkbox(
           value: _isChecked,
           onChanged: updateCheckbox,

@@ -4,12 +4,11 @@ import 'package:app_lista_tarefas/models/tarefa_model.dart';
 
 class TarefaProvider extends ChangeNotifier {
   List<TarefaModel> _listaTarefas = [];
-  late TarefaModel _dadosTarefa;
-  late String _dadosIdTarefa;
+  TarefaModel _dadosTarefa = TarefaModel(
+      id: "", tarefa: "", concluido: "", autor: "", dataCriacao: "");
 
   List<TarefaModel> get listaTarefas => _listaTarefas;
   TarefaModel get dadosTarefa => _dadosTarefa;
-  String get dadosIdTarefa => _dadosIdTarefa;
 
   Future save(TarefaModel tarefa) async {
     await TarefaDao().save(tarefa);
