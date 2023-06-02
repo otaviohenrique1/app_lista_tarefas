@@ -1,11 +1,12 @@
-import 'package:app_lista_tarefas/components/botao.dart';
-import 'package:app_lista_tarefas/pages/editar_tarefa.dart';
+import 'package:app_lista_tarefas/components/alert_warning_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:app_lista_tarefas/components/titulo.dart';
+import 'package:app_lista_tarefas/pages/editar_tarefa.dart';
+import 'package:app_lista_tarefas/pages/homepage.dart';
+import 'package:app_lista_tarefas/components/botao.dart';
+import 'package:app_lista_tarefas/components/item_tarefa_detalhes.dart';
 import 'package:app_lista_tarefas/components/appbar_header.dart';
 import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
-import 'package:app_lista_tarefas/styles/fonts.dart';
 import 'package:app_lista_tarefas/styles/cores.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
 
@@ -85,8 +86,19 @@ class _TarefaDetalhesState extends State<TarefaDetalhes> {
                     builder: (context, providerTarefaModel, child) {
                       return Botao(
                         onPressed: () {
-                          providerTarefaModel.delete(widget.idTarefa);
-                          Navigator.pop(context);
+                          alertWarningDialog(
+                            context: context,
+                            titulo: "Deseja remover a tarefa?",
+                            onPressed: () {
+                              // Navigator.pop(context);
+                              Navigator.pop(context, 'OK');
+                              providerTarefaModel.delete(widget.idTarefa);
+                              Navigator.pop(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomePage()));
+                            },
+                          );
                         },
                         fontColor: branco,
                         label: "Remover",
@@ -99,48 +111,6 @@ class _TarefaDetalhesState extends State<TarefaDetalhes> {
               );
             },
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class ItemTarefaDetalhes extends StatelessWidget {
-  const ItemTarefaDetalhes({
-    super.key,
-    required this.titulo,
-    required this.descricao,
-  });
-
-  final String titulo;
-  final String descricao;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: preto, width: 1),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Titulo(
-              titulo: titulo,
-              alignment: Alignment.centerLeft,
-              color: preto,
-              fontSize: 16,
-              fontWeight: fontWeightBold,
-            ),
-            Titulo(
-              titulo: descricao,
-              alignment: Alignment.centerRight,
-              color: preto,
-              fontSize: 18,
-              fontWeight: fontWeightRegular,
-            ),
-          ],
         ),
       ),
     );

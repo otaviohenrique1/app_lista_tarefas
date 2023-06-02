@@ -1,3 +1,5 @@
+import 'package:app_lista_tarefas/components/alert_warning_dialog.dart';
+import 'package:app_lista_tarefas/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
@@ -86,7 +88,15 @@ class _ItemListaTarefasState extends State<ItemListaTarefas> {
           builder: (context, providerTarefaModel, child) {
             return IconButton(
               onPressed: () {
-                providerTarefaModel.delete(item.id);
+                alertWarningDialog(
+                  context: context,
+                  titulo: "Deseja remover a tarefa?",
+                  onPressed: () {
+                    // Navigator.pop(context);
+                    Navigator.pop(context, 'OK');
+                    providerTarefaModel.delete(item.id);
+                  },
+                );
               },
               icon: const Icon(Icons.delete),
             );
