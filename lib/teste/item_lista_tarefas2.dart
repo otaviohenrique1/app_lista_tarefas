@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:app_lista_tarefas/teste/tarefa_provider2.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
-import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 
 class ItemListaTarefas extends StatefulWidget {
   const ItemListaTarefas({

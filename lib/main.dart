@@ -1,10 +1,7 @@
-import 'package:app_lista_tarefas/data/tarefa_dao.dart';
-import 'package:app_lista_tarefas/models/tarefa_model.dart';
-import 'package:app_lista_tarefas/pages/homepage2.dart';
-import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:app_lista_tarefas/pages/homepage.dart';
 import 'package:provider/provider.dart';
+import 'package:app_lista_tarefas/pages/homepage.dart';
+import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -24,7 +21,7 @@ class App extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage2(),
+      home: const HomePage(),
     );
   }
 }

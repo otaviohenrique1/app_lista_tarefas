@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:app_lista_tarefas/data/tarefa_dao.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
 
-class TarefaProvider extends ChangeNotifier {
-  List<TarefaModel> _listaTarefas = [];
+class TarefaProvider2 extends ChangeNotifier {
+  Future<List<TarefaModel>> _listaTarefas = [] as Future<List<TarefaModel>>;
   late TarefaModel _dadosTarefa;
   late String _dadosIdTarefa;
 
-  List<TarefaModel> get listaTarefas => _listaTarefas;
+  Future<List<TarefaModel>> get listaTarefas => _listaTarefas;
   TarefaModel get dadosTarefa => _dadosTarefa;
   String get dadosIdTarefa => _dadosIdTarefa;
 
@@ -36,7 +36,7 @@ class TarefaProvider extends ChangeNotifier {
   }
 
   findAll() async {
-    _listaTarefas = await TarefaDao().findAll();
+    _listaTarefas = TarefaDao().findAll();
     notifyListeners();
   }
 }
