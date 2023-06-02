@@ -9,7 +9,6 @@ import 'package:app_lista_tarefas/styles/cores.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
 import 'package:app_lista_tarefas/provider/tarefa_provider.dart';
 import 'package:app_lista_tarefas/utils/helpers.dart';
-import 'package:app_lista_tarefas/utils/listas.dart';
 import 'package:app_lista_tarefas/utils/validator.dart';
 
 class NovaTarefa extends StatefulWidget {
@@ -111,23 +110,6 @@ class _NovaTarefaState extends State<NovaTarefa> {
                       backgroundColor: azul1,
                     );
                   },
-                ),
-                const SizedBox(height: 8),
-                Botao(
-                  onPressed: () {
-                    setState(() {
-                      _tituloController.text = listaTarefas[
-                              Random().nextInt(listaTarefas.length - 1)]
-                          .titulo;
-                      _tarefaController.text = listaTarefas[
-                              Random().nextInt(listaTarefas.length - 1)]
-                          .tarefa;
-                      _autorController.text = "Jeca";
-                    });
-                  },
-                  fontColor: branco,
-                  label: "Dados",
-                  backgroundColor: azul1,
                 ),
                 const SizedBox(height: 50),
               ],

@@ -1,5 +1,5 @@
-import 'package:app_lista_tarefas/styles/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:app_lista_tarefas/styles/fonts.dart';
 
 class Titulo extends StatelessWidget {
   const Titulo({

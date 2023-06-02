@@ -1,7 +1,6 @@
-import 'package:app_lista_tarefas/components/alert_warning_dialog.dart';
-import 'package:app_lista_tarefas/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:app_lista_tarefas/components/alert_warning_dialog.dart';
 import 'package:app_lista_tarefas/models/tarefa_model.dart';
 import 'package:app_lista_tarefas/pages/tarefa_detalhes.dart';
 import 'package:app_lista_tarefas/provider/tarefa_provider.dart';

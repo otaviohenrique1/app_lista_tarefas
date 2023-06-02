@@ -1,7 +1,7 @@
-import 'package:app_lista_tarefas/styles/cores.dart';
-import 'package:app_lista_tarefas/styles/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:app_lista_tarefas/styles/cores.dart';
+import 'package:app_lista_tarefas/styles/fonts.dart';
 
 class CampoTexto extends StatelessWidget {
   const CampoTexto({
