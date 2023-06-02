@@ -129,6 +129,7 @@ class _NovaTarefaState extends State<NovaTarefa> {
                   label: "Dados",
                   backgroundColor: azul1,
                 ),
+                const SizedBox(height: 50),
               ],
             ),
           ),

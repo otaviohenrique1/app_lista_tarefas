@@ -119,6 +119,7 @@ class _EditarTarefaState extends State<EditarTarefa> {
                       label: "Salvar",
                       backgroundColor: azul1,
                     ),
+                    const SizedBox(height: 50),
                   ],
                 ),
               );
