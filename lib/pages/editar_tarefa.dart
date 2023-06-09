@@ -74,7 +74,7 @@ class _EditarTarefaState extends State<EditarTarefa> {
                       exibeLabel: true,
                       label: "Tarefa",
                       maxLines: 10,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.multiline,
                       controller: _tarefaController,
                       hintText: "Digite a tarefa",
                       obscureText: false,

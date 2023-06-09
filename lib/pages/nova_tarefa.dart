@@ -47,7 +47,7 @@ class _NovaTarefaState extends State<NovaTarefa> {
                   exibeLabel: true,
                   label: "Titulo",
                   validator: validaCampoVazio,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.multiline,
                   controller: _tituloController,
                   hintText: "Digite o titulo da tarefa",
                   obscureText: false,
